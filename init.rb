@@ -1,6 +1,5 @@
 require 'redmine'
-
-require_dependency 'redmine_close_button/hooks'
+require_relative 'lib/redmine_close_button/hooks'
 
 Redmine::Plugin.register :redmine_close_button do
   name 'Redmine Close Issue Button Plugin'
