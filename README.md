@@ -4,7 +4,8 @@ This plugin adds the **Close** button to the issue toolbar in Redmine.
 
 ## Compatibility
 
-This plugin is compatible with Redmine 0.9.6, 1.0.2, 1.0.5, 1.1.0, 1.2.1, 1.3.1, 2.0.3, 2.1.0, 2.6.0.
+This plugin is compatible with Redmine 5.x
+I did not check with older versions, just updated one line to make it work with 5.x
 
 ## Installation
 
