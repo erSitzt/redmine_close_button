@@ -49,11 +49,16 @@
 					.css('display', 'inline')
 					.click(closer);
 
-				var delButton = $(this).find('a.icon-del');
-				if (delButton.length > 0) {
-					closeButton.insertBefore(delButton);
+				var drdn = $(this).find('span.drdn');
+				if (drdn.length > 0) {
+					closeButton.insertBefore(drdn);
 				} else {
-					$(this).append(closeButton);
+					var delButton = $(this).find('a.icon-del');
+					if (delButton.length > 0) {
+						closeButton.insertBefore(delButton);
+					} else {
+						$(this).append(closeButton);
+					}
 				}
 			});
 		});
@@ -113,11 +118,16 @@
 				var closeButton = closeButtonTemplate.cloneNode(true);
 				closeButton.style.display = 'inline';
 				closeButton.observe('click', closer);
-				var delButton = area.select('a.icon-del');
-				if (delButton.length > 0) {
-					delButton[0].insert({ before: closeButton });
+				var drdn = area.select('span.drdn');
+				if (drdn.length > 0) {
+					drdn[0].insert({ before: closeButton });
 				} else {
-					area.appendChild(closeButton);
+					var delButton = area.select('a.icon-del');
+					if (delButton.length > 0) {
+						delButton[0].insert({ before: closeButton });
+					} else {
+						area.appendChild(closeButton);
+					}
 				}
 			}
 		});
