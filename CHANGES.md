@@ -2,6 +2,11 @@
 
 ## Changelog
 
+### 0.0.9
+
+- Fix icon rendering on Redmine 7.0: removed global `.icon-close` background-image override that conflicted with Redmine 7's SVG/font icon system.
+- Fix button placement on Redmine 5.1+: close button is now inserted before the `…` dropdown (`span.drdn`) so it appears prominently in the toolbar instead of inside the submenu.
+
 ### 0.0.8
 
 - Compatibility with Redmine 1.3.x. Thanks to @avkvl.
