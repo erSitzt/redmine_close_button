@@ -2,6 +2,13 @@
 
 ## Changelog
 
+### 0.0.11
+
+- Restore the check mark icon next to the close button: the button now uses Redmine's
+  `checked` icon (SVG sprite icon on Redmine 6.0+, `icon-checked` CSS icon on Redmine 5.1).
+- The hidden button template is now identified by an id instead of being hidden through
+  its class, so the buttons cloned into the toolbar keep Redmine's own icon styling.
+
 ### 0.0.10
 
 - The `VERSION` file is now the single source of truth for the plugin version and is read by `init.rb`.
