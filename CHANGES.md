@@ -2,6 +2,13 @@
 
 ## Changelog
 
+### 0.0.10
+
+- The `VERSION` file is now the single source of truth for the plugin version and is read by `init.rb`.
+- Added a release workflow that publishes a zipped plugin archive for `v*` tags.
+- Added smoke tests running against the official Redmine Docker images (5.1, 6.0, 6.1, 7.0) and a CI workflow running them.
+- Added Copilot and Claude Code instructions.
+
 ### 0.0.9
 
 - Fix icon rendering on Redmine 7.0: removed global `.icon-close` background-image override that conflicted with Redmine 7's SVG/font icon system.

@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    name: Redmine ${{ matrix.redmine }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        redmine: ['5.1', '6.0', '6.1', '7.0']
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run plugin smoke test
+        run: test/docker/run.sh ${{ matrix.redmine }}
+
+  version:
+    name: Version consistency
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check VERSION is documented in CHANGES.md
+        run: |
+          version="$(cat VERSION)"
+          echo "Plugin version: $version"
+          grep -q "^### ${version}$" CHANGES.md || {
+            echo "CHANGES.md has no '### ${version}' section"
+            exit 1
+          }

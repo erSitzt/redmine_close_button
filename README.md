@@ -4,8 +4,9 @@ This plugin adds the **Close** button to the issue toolbar in Redmine.
 
 ## Compatibility
 
-This plugin is compatible with Redmine 5.x
-I did not check with older versions, just updated one line to make it work with 5.x
+This plugin is tested against Redmine **5.1**, **6.0**, **6.1** and **7.0** using the
+official Redmine Docker images (see [Testing](#testing)). Older versions are not
+tested, but may still work.
 
 ## Installation
 
@@ -45,6 +46,32 @@ To close the issue, click the **Close** button on the issue toolbar.
 
 This will change the issue status to **Closed** and its progress to **100%**.
 ![close link result](close_button_2.PNG)
+
+## Testing
+
+The plugin is verified against the official [Redmine Docker images](https://hub.docker.com/_/redmine).
+With Docker available, run:
+
+```bash
+test/docker/run.sh          # all supported Redmine versions
+test/docker/run.sh 7.0      # a single version
+```
+
+Each run starts `redmine:<version>` with this directory mounted as
+`plugins/redmine_close_button` and asserts that the plugin registers and that the
+close button and its assets are rendered on an issue page. The same tests run in CI
+for every push and pull request.
+
+## Versioning and releases
+
+The `VERSION` file is the single source of truth for the plugin version; `init.rb`
+reads it when registering the plugin. To release:
+
+1. Bump `VERSION`.
+2. Add a matching `### <version>` section at the top of `CHANGES.md`.
+3. Push a `v<version>` tag. The release workflow validates that the tag matches
+   `VERSION`, builds `redmine_close_button-<version>.zip` and publishes a GitHub
+   release with the changelog section as release notes.
 
 ## Maintainers
 
