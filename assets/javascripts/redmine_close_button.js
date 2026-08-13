@@ -42,11 +42,14 @@
 				done_ratio.val(100);
 				f.submit();
 			};
-			var closeButtonTemplate = $('a.redmine-close-button');
+			var closeButtonTemplate = $('#redmine-close-button-template');
+			if (closeButtonTemplate.length === 0) {
+				return;
+			}
 			areas.each(function() {
 				var closeButton = closeButtonTemplate
 					.clone()
-					.css('display', 'inline')
+					.removeAttr('id')
 					.click(closer);
 
 				var drdn = $(this).find('span.drdn');
@@ -112,11 +115,14 @@
 				}
 				f.submit();
 			};
-			var closeButtonTemplate = $$('a.redmine-close-button')[0];
+			var closeButtonTemplate = $('redmine-close-button-template');
+			if (closeButtonTemplate === null) {
+				return;
+			}
 			for (ai = 0; ai < areas.length; ai++) {
 				var area = areas[ai];
 				var closeButton = closeButtonTemplate.cloneNode(true);
-				closeButton.style.display = 'inline';
+				closeButton.removeAttribute('id');
 				closeButton.observe('click', closer);
 				var drdn = area.select('span.drdn');
 				if (drdn.length > 0) {
